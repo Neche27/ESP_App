@@ -1,18 +1,8 @@
 import 'package:esp8266_app/controller/file_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'pages/home_page.dart';
-
-const textColor = Color.fromARGB(255, 255, 255, 255);
-const backgroundColor = Color.fromARGB(255, 170,34,38);
-const primaryColor = Color.fromARGB(255, 255, 130, 28);
-const primaryFgColor = Color(0xFF110a14);
-const secondaryColor = Color(0xFF662680);
-const secondaryFgColor = Color(0xFFf0ebf2);
-const accentColor = Color(0xFFad41d7);
-const accentFgColor = Color(0xFF110a14);
-  
-
+import 'core/constants.dart';
+import  'widget_tree.dart';
 
 void main() => runApp(
   MultiProvider(providers: [ChangeNotifierProvider(create: (_) => FileController())],
@@ -49,9 +39,7 @@ class MyApp extends StatelessWidget {
                   borderRadius: BorderRadius.all(Radius.circular(20)))),
         ),
       ),
-      home: const MyHomePage(
-        title: title,
-      ),
+      home: const WIdgetTree()
     );
   }
 }

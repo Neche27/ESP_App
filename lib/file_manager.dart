@@ -36,15 +36,16 @@ class FileManager {
       try {
         fileContent = await file.readAsString();
       } catch (e) {
-        print("errorrrtgvvj");
+        print("My error");
       }
     }
 
     return fileContent;
   }
 
-  Future<String> writeTextFile() async {
+  Future<String> writeTextFile(String txt) async {
     String text = DateFormat('h:mm:ss').format(DateTime.now());
+    text += " $txt";
 
     File file = await _file;
 

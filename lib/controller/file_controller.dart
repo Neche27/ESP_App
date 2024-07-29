@@ -15,8 +15,8 @@ class FileController extends ChangeNotifier
     notifyListeners();
   }
 
-  writeText() async {
-    _text = await FileManager().writeTextFile();
+  writeText(String txt) async {
+    _text = await FileManager().writeTextFile(txt);
     notifyListeners();
   }
 
