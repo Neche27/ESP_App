@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'pages/home_page.dart';
 import 'pages/profile.dart';
-import 'core/constants.dart';
 
 class WIdgetTree extends StatefulWidget {
   const WIdgetTree({super.key});
@@ -13,7 +12,7 @@ class WIdgetTree extends StatefulWidget {
 class _WIdgetTreeState extends State<WIdgetTree> {
   int currentPageIndex = 0;
   List<Widget> pageList = [
-    MyHomePage(title: "ENSC 100 Project", channel: channel,),
+    MyHomePage(title: "ENSC 100 Project",),
     const ProfilePage()
   ];
 
@@ -38,4 +37,6 @@ class _WIdgetTreeState extends State<WIdgetTree> {
       ),
     );
   }
+  
+
 }

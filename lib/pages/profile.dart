@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../core/constants.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -31,9 +32,24 @@ class _ProfilePageState extends State<ProfilePage> {
               padding: EdgeInsets.all(20),
               child: Card(
                   elevation: 25,
-                  child: Column(children: [
-                    
-                  ])),
+                  child: SingleChildScrollView(
+                    child: Padding(
+                      padding: EdgeInsets.all(12),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text("ENSC100 Project Details", style: TextStyle(fontSize: 24, ), textAlign: TextAlign.center,),
+                          SizedBox(height: 20,),
+                        Text(
+                                      txtD,
+                                      style: TextStyle(
+                      fontSize: fSize,
+                                      ),
+                                      textAlign: TextAlign.justify,
+                                    )
+                      ]),
+                    ),
+                  )),
             )),
       ),
     );

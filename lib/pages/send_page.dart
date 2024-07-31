@@ -1,6 +1,7 @@
 import 'package:esp8266_app/controller/file_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:web_socket_channel/web_socket_channel.dart';
 import '../core/constants.dart';
 
 class SendPage extends StatefulWidget {
@@ -12,6 +13,9 @@ class SendPage extends StatefulWidget {
 
 class _SendPageState extends State<SendPage> {
   final TextEditingController _controller = TextEditingController();
+  final channel = WebSocketChannel.connect(
+    Uri.parse('ws://esp8266LAN.local/ws'),
+  );
   String text = "";
   @override
   Widget build(BuildContext context) {
@@ -22,8 +26,8 @@ class _SendPageState extends State<SendPage> {
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
               colors: [
-                Color.fromARGB(255, 213, 207, 233),
-                Color.fromARGB(255, 182, 176, 204),
+                pageBackgroundColor1,
+                pageBackgroundColor2,
               ])),
       child: Scaffold(
         backgroundColor: Colors.transparent,
@@ -81,10 +85,10 @@ class _SendPageState extends State<SendPage> {
       channel.sink.add(_controller.text);
     }
   }
-
-  @override
+ @override
   void dispose() {
     channel.sink.close();
+    _controller.dispose();
     super.dispose();
   }
 }

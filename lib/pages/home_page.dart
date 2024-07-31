@@ -3,29 +3,24 @@ import 'package:esp8266_app/pages/send_page.dart';
 import 'package:flutter/material.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 import '../model/client_json.dart';
+import '../core/constants.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({
     super.key,
     required this.title,
-    required this.channel,
   });
 
   final String title;
-  final WebSocketChannel channel;
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final TextEditingController _controller = TextEditingController();
   final _channel = WebSocketChannel.connect(
-    Uri.parse('ws://esp8266LAN.local/ws'),
+      Uri.parse('ws://esp8266LAN.local/ws'),
   );
-  List<String> btnValues = ['A', 'B', 'C', 'D'];
-  Color? btnColor = const Color.fromARGB(255, 170, 34, 38);
-  List<bool> isPressed = [false, false, false, false];
 
   @override
   Widget build(BuildContext context) {
@@ -57,14 +52,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     Card(
                         elevation: 25,
                         child: Column(children: [
-                          Form(
-                            child: TextFormField(
-                              controller: _controller,
-                              decoration: const InputDecoration(
-                                  labelText: 'Send a message'),
-                            ),
+                          const SizedBox(
+                            height: 24,
+                            width: 265,
                           ),
-                          const SizedBox(height: 24),
                           StreamBuilder(
                             stream: _channel.stream,
                             builder: (context, snapshot) {
@@ -188,25 +179,13 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
-  void _sendMessage() {
-    if (_controller.text.isNotEmpty) {
-      if (_controller.text == 'R') {
-        _controller.text = 'N';
-      } else if (_controller.text == 'N') {
-        _controller.text = 'R';
-      }
-      _channel.sink.add(_controller.text);
-    }
-  }
-
   void _sendButtonValue(String txt) {
     _channel.sink.add(txt);
   }
 
-  @override
+ @override
   void dispose() {
     _channel.sink.close();
-    _controller.dispose();
     super.dispose();
   }
 }
