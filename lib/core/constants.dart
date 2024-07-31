@@ -3,7 +3,7 @@ import 'dart:ui';
 
 
 //values
-List<String> btnValues = ['R', 'R', 'O', 'D'];
+List<String> btnValues = ['A', 'B', 'C', 'D'];
 List<bool> isPressed = [false, false, false, false];
 //colors
 const pageBackgroundColor1 = Color.fromARGB(255, 213, 207, 233);
