@@ -12,14 +12,15 @@ class MyHomePage extends StatefulWidget {
   });
 
   final String title;
-
+ 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
   final _channel = WebSocketChannel.connect(
-      Uri.parse('ws://esp8266LAN.local/ws'),
+      Uri.parse('ws://esp8266LAN/ws'),
   );
 
   @override
